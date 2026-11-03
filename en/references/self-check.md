@@ -17,7 +17,8 @@ Go through every item after drafting. If any item fails, fix it before deliverin
 ## C. Business-anchored and practical
 - [ ] Does every 🔴 point have a case (a real incident, or one labeled "example scenario")?
 - [ ] Does each case cover all four things: what happened / root cause matching which link / business consequence / takeaway for a pentester?
-- [ ] Does "how to use it in practice" include: trigger cues, minimal verification, judging the result, next step?
+- [ ] Does "how to use it in practice" include: trigger cues, minimal verification, judging the result, next step, impact proof?
+- [ ] For 🔴 Web-vulnerability points, is there a "code-level" comparison (flawed code vs fixed code, marking source and sink)?
 - [ ] Any fabricated CVE IDs, company names, or amounts? (Must be zero)
 
 ## D. Honesty and verifiability

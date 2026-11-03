@@ -45,6 +45,20 @@ points get a short paragraph only.
 
 【If there is a data flow, draw it with text arrows or mermaid: user input -> program processing -> dangerous function / operation -> result】
 
+**What it looks like at the code level** (applies to Web-vulnerability types; can be omitted for others)
+
+```【language】
+// ❌ Flawed version: mark source (where input comes from) and sink (where the dangerous operation is)
+【minimal illustrative code】
+```
+
+```【language】
+// ✅ Fixed version
+【minimal illustrative code】
+```
+
+【One or two sentences: why the fix works; what kind of code should raise an alarm during code audit】
+
 ### 1.3 How to do it (procedure)
 
 **Step 1:【action name】**
@@ -71,6 +85,8 @@ What normal output looks like and how to read it:【】
 - **How to verify**:【the cheapest way to confirm, and how to avoid damaging the target】
 - **How to judge the result**:【which observation counts as confirmed, which counts as not confirmed】
 - **Next step**:【what to do once confirmed; the alternative line of thinking if not confirmed】
+- **How to prove impact**:【use minimal, non-destructive evidence to show the harm: what data can be read, what can be
+  controlled, how many users are affected. In a report this decides whether the vulnerability is accepted and how it is rated】
 
 ### 1.6 Defense and detection view
 【How developers usually fix it; why the fix is sometimes incomplete. Keep it brief】

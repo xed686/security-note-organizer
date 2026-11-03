@@ -44,6 +44,8 @@ keywords.
 
 - When the input is fragmented or very short, do **not** fire back a pile of questions. Make a reasonable inference and
   proceed, marking inferred parts per Step 4.
+- Screenshots / PPT images: first recognize the text, commands, and diagrams in them; anything you cannot read clearly
+  goes into "Pending verification" — do not guess.
 - Ask a single clarifying question **only when the topic is completely undeterminable**.
 - When the input is long and covers multiple topics, split it by knowledge point. If it is too large, produce it in
   batches and tell the user the split plan first.
@@ -73,11 +75,18 @@ Skeleton for real understanding (the core idea: **every step has a why**):
 
 1. **What it is**: a one-sentence definition plus a everyday-life analogy.
 2. **Why it exists (principle / root cause)**: the fundamental reason behind the vulnerability or technique. Beginners
-   lack this most, and it is the source of vulnerability intuition.
+   lack this most, and it is the source of vulnerability intuition. For 🔴 Web-vulnerability points, also add a
+   short segment on **what it looks like at the code level**: a flawed illustrative snippet versus the fixed one, marking
+   source (where user input enters) and sink (where the dangerous function is). Black-box testing teaches "how to try";
+   the code level teaches "why exactly here" — the source of vulnerability-research and code-audit intuition. Keep the
+   code minimal and illustrative.
 3. **How to do it (procedure)**: step by step, each step answering three fixed things: what you do, **why you do it**,
    and what you get (plus what it means if it fails).
 4. **What it looks like in a business**: a real case / typical business scenario, per Step 5.
-5. **How to use it in practice**: when to think of it -> how to verify -> how to judge the result -> what to do next.
+5. **How to use it in practice**: when to think of it -> how to verify -> how to judge the result -> what to do next ->
+   **how to prove impact**. The last item means: use minimal, non-destructive evidence to show what harm this bug can
+   actually cause (what data can be read, what can be controlled). In Bug Bounty and pentest reports, vulnerabilities
+   whose impact is unclear are often downgraded or rejected, so this item matters as much as "finding the vulnerability".
 6. **Defense and detection view**: brief. Knowing how the defender fixes it tells you where fixes leak and where bypass
    ideas come from.
 7. **Common mistakes**: beginner misconceptions and troubleshooting leads.
@@ -122,9 +131,10 @@ went wrong inside a real company**.
 
 ### Step 7: Finalize and self-check
 
-- Default output is a **Markdown file** (`.md`), saved to `/mnt/user-data/outputs/`, then delivered with `present_files`.
-  If the user explicitly asks for another format (Word, PDF, etc.), follow that and read the corresponding format skill
-  first.
+- Default output is a **Markdown file** (`.md`). In claude.ai, save it to `/mnt/user-data/outputs/` and deliver with
+  `present_files`; in other environments such as Claude Code, save to the current working directory or a user-specified
+  location (e.g. the user's notes library). If the user explicitly asks for another format (Word, PDF, etc.), follow
+  that and read the corresponding format skill first.
 - Filename: a concise title, e.g. `sql-injection-union-based-notes.md`.
 - Before delivery, check the draft item by item against `references/self-check.md`. Fix anything that fails, then deliver.
 - Keep the reply short: what ratings you applied, what you added, what needs verification. **Do not paste the whole set of

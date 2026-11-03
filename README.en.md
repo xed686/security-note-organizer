@@ -116,7 +116,8 @@ Every knowledge point expands along the "skeleton for real understanding" (the c
 2. **Why it exists** — the root cause behind the vulnerability or technique (beginners lack this most, and it is the source of vulnerability intuition)
 3. **How to do it** — step by step, each step answering: what you do, **why you do it**, what you get
 4. **What it looks like in a business** — a real case / typical business scenario
-5. **How to use it in practice** — when to think of it -> how to verify -> how to judge the result -> what to do next
+5. **How to use it in practice** — when to think of it -> how to verify -> how to judge the result -> what to do next ->
+   **how to prove impact** (use minimal, non-destructive evidence of harm — it decides the vulnerability's rating)
 6. **Defense and detection view** — knowing how the defender fixes it tells you where fixes leak
 7. **Common mistakes** — frequent misconceptions and troubleshooting leads
 
@@ -145,14 +146,14 @@ notes**:
 
 ---
 
-## Known caveat
+## Known caveat (output path)
 
-In Step 7 of `SKILL.md`, the default output directory is written as `/mnt/user-data/outputs/`, a **Linux / container**
-path that has no equivalent on Windows (it typically resolves somewhere under the application install directory, so the
-generated files end up where you would never look).
+Step 7 of `SKILL.md` now distinguishes the output location by environment:
 
-Both language versions in this repository are kept faithful to the original and are **not modified**. If you use this on
-Windows, change that line to a directory inside your workspace, for example:
+- In **claude.ai**: by default save to `/mnt/user-data/outputs/` (a Linux / container path) and deliver with `present_files`.
+- In **local environments such as Claude Code**: by default save to the current working directory, or a location you specify (e.g. your notes library).
+
+If you use claude.ai on Windows and want the output to land in a locally accessible directory, change that line to a directory inside your workspace, for example:
 
 ```markdown
 Save to the `outputs/` subdirectory of the current workspace; if there is no workspace, save to
