@@ -29,7 +29,12 @@ Go through every item after drafting. If any item fails, fix it before deliverin
 
 ## E. Structure and format
 - [ ] Is the output a `.md` file delivered via `present_files` (when the user did not ask for another format)?
-- [ ] Is every knowledge point marked with its relevance (🔴 / 🟡 / ⚪), and does the depth match it?
+- [ ] Is it rated by the four tiers (🔴 Core / 🟡 Important / 🟢 Awareness / ⚪ Skim), at the **specific knowledge-point / subsection** level rather than one level for the whole note?
+- [ ] Does every tier label carry half a line on "how to treat it" (e.g. "⚪ Skim — rarely encountered, just know the name")?
+- [ ] Does the top info block have an "Overall rating for this note" line and the four-tier legend?
+- [ ] Are 🟢 and ⚪ clearly distinguished: 🟢 has transferable thinking + reference pointers, ⚪ is only one or two lines with no steps or code?
+- [ ] Does the rating combine the pentest / vuln-research direction and real-engagement frequency? Are niche, outdated, or specific-old-version items pushed down to ⚪?
+- [ ] Does the depth match the tier (⚪ written as a long passage, or 🔴 as one line, both fail)?
 - [ ] For concepts already covered in earlier notes, are they only referenced rather than repeated, and do the referenced notes actually exist?
 - [ ] Is there a "methodology overview" and a "self-test"?
 - [ ] Is the reply only a brief explanation, without pasting the whole set of notes again?
@@ -45,7 +50,9 @@ Go through every item after drafting. If any item fails, fix it before deliverin
 | Symptom | Fix |
 | --- | --- |
 | The notes are just the original text reformatted | Back to Step 3: add root cause and the three questions to every point |
-| Long but without focus | Back to Step 2: re-rate, compress 🟡 / ⚪ |
+| Long but without focus | Back to Step 2: re-rate, compress 🟢 into a paragraph and ⚪ into one or two lines |
+| Reader can't tell what can be skipped | Check whether 🟢 / ⚪ are mixed up; re-judge by "will this thinking help me think of something later" |
+| Whole note has only one level | Split to subsection granularity and label separately (principle, setup steps, harm extension are often at different levels) |
 | Vague cases | Go to case-anchors.md for a real case, or rewrite as an example scenario with business nouns |
 | The reader cannot tell what was added | Add the "🔎 Added" marker |
 | Commands explained in usage but not in reason | Rewrite as "fragment / what it does / why it is needed" |

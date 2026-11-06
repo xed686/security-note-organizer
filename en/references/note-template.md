@@ -1,8 +1,12 @@
 # Note Output Template
 
-Build the skeleton from this template when drafting. Brackets【】mark content you need to fill in. 🔴 Core knowledge
-points use the full 7 modules; 🟡 Supporting points keep modules 1, 2, 3 and 5, with an optional brief case; ⚪ Awareness
-points get a short paragraph only.
+Build the skeleton from this template when drafting. Brackets【】mark content you need to fill in. Length follows the
+four-tier rating (rules in SKILL.md Step 2): 🔴 Core uses the full 7 modules; 🟡 Important keeps modules 1, 2, 3 and 5 and
+states where to look it up when needed; 🟢 Awareness is a short paragraph of concept + transferable thinking; ⚪ Skim is
+one or two lines.
+
+Rate at the **specific knowledge-point / subsection** level, not one level for the whole note; every label is followed by
+half a line on "how to treat it".
 
 ---
 
@@ -18,6 +22,15 @@ points get a short paragraph only.
 > One-line summary:【the single most important takeaway — a beginner who reads this line knows what they learned】
 > Source:【course / article / lab name; parts added by Claude are marked with "🔎 Added"】
 > Preconditions: authorized environments, labs, and CTF only.
+> **Overall rating for this note**:【one sentence telling the reader whether the whole note should be read closely or
+  skimmed, and point out the few things that must be remembered. Example: "Overall this note is mainly 🟢 / ⚪ — skim to
+  build concepts and keep for reference; just remember points XX and YY."】
+
+> [!tip] 📊 Rating legend
+> 🔴 Core — high-frequency, general-purpose bread and butter: must truly understand + reproduce, drill repeatedly
+> 🟡 Important — used in real engagements but not every day: understand the principle, look it up and use it, no need to memorize
+> 🟢 Awareness — concept worth knowing, details for reference: read once to build the concept, keep for reference
+> ⚪ Skim — rarely encountered / niche / outdated: just know the name, no need to spend time
 
 ---
 
@@ -25,16 +38,20 @@ points get a short paragraph only.
 
 【What this piece covers, where it sits in the penetration testing workflow, what you can do after learning it】
 
-| Knowledge point | Relevance | Position in the pentest workflow | One-line purpose |
+| Knowledge point | Tier | Position in the pentest workflow | One-line purpose |
 | --- | --- | --- | --- |
 | 【Point A】 | 🔴 Core | 【e.g. vulnerability discovery / exploitation / reconnaissance】 | 【one line】 |
-| 【Point B】 | 🟡 Supporting | 【】 | 【】 |
+| 【Point B】 | 🟡 Important | 【】 | 【】 |
+| 【Point C】 | 🟢 Awareness | 【】 | 【】 |
+| 【Point D】 | ⚪ Skim | 【】 | 【】 |
+
+**Suggested reading order**:【which parts to read closely first, which can be skipped】
 
 **Prerequisites**:【what you need to know first. If earlier notes covered it, write "see *Notes on X*" and recap it in one sentence】
 
 ---
 
-## 1. 【Point A】(🔴 Core)
+## 1. 【Point A】🔴 Core — must master, reproduce hands-on
 
 ### 1.1 What it is
 【One-sentence definition】
@@ -97,18 +114,46 @@ What normal output looks like and how to read it:【】
 
 ---
 
-## 2. 【Point B】(🟡 Supporting)
+## 2. 【Point B】🟡 Important — understand the principle, look it up when used
 (Keep 1.1, 1.2, 1.3, 1.5; the case can be one or two sentences)
 
-## 3. 【Point C】(⚪ Awareness)
-【A short paragraph + one sentence on why it is low priority for pentesting】
+**Where to look it up when needed**:【tool official docs, cheat sheet, parameter tables, etc.; no need to memorize】
+
+## 3. 【Point C】🟢 Awareness — read once, keep for reference
+【A short paragraph stating the concept】
+
+**Transferable thinking**:【one line: in what future scenario this thinking helps you think of something】
+**Details for reference**:【where the details can be looked up; no full steps】
+
+## 4. 【Point D】⚪ Skim — rarely encountered, just know the name
+【One or two lines: name + one-line what-it-is + why skim (e.g. depends on an old version, rarely seen in the wild / discontinued)】
 
 ---
 
-## 4. Putting it together: methodology overview
+### Example of mixed-tier grading within one section
+
+When different parts of a section are at different levels, label them at the subsection level, not one level for the whole
+section:
+
+```markdown
+## N. 【Some vulnerability-environment lesson】
+
+### N.1 Why this vulnerability exists 🟡 Important — understand the principle, look it up when used
+【principle explanation】
+
+### N.2 Environment setup steps and demo code ⚪ Skim — lab-specific, just know this step exists
+【one or two lines, no detailed steps】
+
+### N.3 Harm extension: what it can combine with 🟢 Awareness — read on the way, build the thinking
+【a short paragraph + transferable thinking】
+```
+
+---
+
+## 5. Putting it together: methodology overview
 【String this piece's methods into one decision flow, e.g. "spot something suspicious -> verify -> confirm the type -> exploit -> assess impact". Use mermaid or an arrowed text flow, and mark the decision basis at every branch】
 
-## 5. Self-test (think it through before opening the answers)
+## 6. Self-test (think it through before opening the answers)
 1. 【In your own words: why does a certain principle hold】
 2. 【Scenario question: given a business scenario, how would you start】
 3. 【Troubleshooting question: when the observation is not as expected, what could be the causes】
@@ -120,11 +165,11 @@ What normal output looks like and how to read it:【】
 
 </details>
 
-## 6. Pending verification / doubts
+## 7. Pending verification / doubts
 - 【Content you are unsure about, needing user or official-source verification】
 - 【Suspected errors in the original notes, with explanation】
 
-## 7. Sources
+## 8. Sources
 - 【Original notes / course】
 - 【Material consulted for the added content (non-mainland-China sources)】
 ````

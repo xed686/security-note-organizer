@@ -124,16 +124,20 @@ Every knowledge point expands along the "skeleton for real understanding" (the c
 Whenever a command, payload, or tool parameter appears, it is **broken down into every fragment**: what this fragment is,
 what it does, why it is needed — plus what normal output looks like and how to read it.
 
-### Relevance rating
+### Four-tier rating
 
-Not every point gets the same depth. Relevance to real pentest work is judged first, and **the rating is written into the
-notes**:
+Not every point gets the same depth. Points are rated into four tiers first, then depth follows; **the rating is written
+into the notes**:
 
-| Level | Criteria | Treatment |
+| Tier | Meaning | Treatment |
 | --- | --- | --- |
-| 🔴 Core | Appears directly in the pentest workflow, or builds "vulnerability intuition" (SQL Injection, XSS, SSRF, file upload, reconnaissance, privilege escalation, lateral movement) | Full 7-module expansion, with a real case |
-| 🟡 Supporting | Fundamentals that back the core skills (HTTP details, encoding, common middleware) | Keep "what / why / how", case may be brief |
-| ⚪ Awareness | Only loosely related to real pentest work (compliance clauses, history of obscure protocols) | One short paragraph, plus why it is low priority |
+| 🔴 Core | High-frequency, general-purpose, transferable — the bread and butter | Full 7-module expansion, with a real case; Web-vuln points get a code-level comparison |
+| 🟡 Important | Used in real engagements, but not every day | Write what / why / how / how-to-use clearly; state "where to look it up when needed" |
+| 🟢 Awareness | Good to know it exists; the thinking can transfer | A short paragraph of concept + one line of transferable thinking; details for reference |
+| ⚪ Skim | Rarely encountered / niche / outdated | One or two lines, just know the name; no steps, no code |
+
+Rate at the **specific knowledge-point / subsection** level, not one level for the whole note; every tier label carries
+half a line on "how to treat it".
 
 ### Honest labeling
 
