@@ -26,9 +26,11 @@ Go through every item after drafting. If any item fails, fix it before deliverin
 - [ ] Are uncertain version numbers, figures, and parameters in the "pending verification" list rather than written down as fact?
 - [ ] Are errors in the original notes pointed out and explained, rather than quietly corrected?
 - [ ] Were all sources used for verification non-mainland-China sources?
+- [ ] For details that could be tested locally / in a lab, did you actually run them? Does the record state the environment, the command, and the actual output, with a separate "Verified by testing" line under Sources?
+- [ ] When the source notes conflicted with your test or verification result, did you say so plainly and give the correct form (instead of silently correcting it, or dropping the test result to spare the original)?
 
 ## E. Structure and format
-- [ ] Is the output a `.md` file delivered via `present_files` (when the user did not ask for another format)?
+- [ ] Is the output a `.md` file saved to the right place per the host environment's conventions (when the user did not ask for another format)?
 - [ ] Is it rated by the four tiers (🔴 Core / 🟡 Important / 🟢 Awareness / ⚪ Skim), at the **specific knowledge-point / subsection** level rather than one level for the whole note?
 - [ ] Does every tier label carry half a line on "how to treat it" (e.g. "⚪ Skim — rarely encountered, just know the name")?
 - [ ] Does the top info block have an "Overall rating for this note" line and the four-tier legend?
@@ -38,6 +40,9 @@ Go through every item after drafting. If any item fails, fix it before deliverin
 - [ ] For concepts already covered in earlier notes, are they only referenced rather than repeated, and do the referenced notes actually exist?
 - [ ] Is there a "methodology overview" and a "self-test"?
 - [ ] Is the reply only a brief explanation, without pasting the whole set of notes again?
+- [ ] **Link validity**: does every `[[wikilink]]` / relative link resolve to a file that actually exists? (Grep or list the folder — do not trust memory)
+- [ ] **Index and backlinks**: is the new note in the folder MOC (note list and topic thread), and did the 1–3 most related older notes get a backlink?
+- [ ] **Length**: not padded or trimmed by line count — is 🔴 limited to a minority of subsections (roughly ≤ 1/3)? Is each piece of information stated only once? Can the skeleton be recapped in five lines? If it is genuinely too big, split it into parts rather than flattening the content.
 
 ## F. Boundaries
 - [ ] Is "authorized environments / labs / CTF only" written once at the top?
@@ -56,3 +61,7 @@ Go through every item after drafting. If any item fails, fix it before deliverin
 | Vague cases | Go to case-anchors.md for a real case, or rewrite as an example scenario with business nouns |
 | The reader cannot tell what was added | Add the "🔎 Added" marker |
 | Commands explained in usage but not in reason | Rewrite as "fragment / what it does / why it is needed" |
+| A link points to a note that does not exist (a dead link in Obsidian) | After saving, grep every `[[...]]` and check the target file, then use the real filename |
+| Half the note is 🔴 and the reader still does not know what to read first | Re-rate by "how the reader should treat it", push non-frequent items to 🟡/🟢; if the topic is genuinely large, split it into parts instead of trimming lines |
+| The note is delivered but the MOC was not updated and no older note links back | Follow Step 7a — index and backlinks are part of delivery |
+| Platform-specific leftovers (claude.ai outputs directory, present_files, etc.) | Rewrite the save location and link syntax for the host environment |

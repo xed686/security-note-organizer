@@ -1,15 +1,20 @@
 ---
 name: security-note-organizer-en
 description: >-
-  Turn cybersecurity class notes, video transcripts, lab logs, and article material into deep-learning notes written for
-  security beginners (Markdown by default). Notes are organized from the perspective of penetration testing and
-  vulnerability research, following "what it is -> why it exists (root cause) -> how to do it (procedure and the purpose
-  of every step) -> what it looks like in a real business (real cases) -> how to use it in practice", and anchoring key
-  points to real-world cases or business scenarios so the knowledge does not stay superficial. Use this skill whenever the
-  user says "organize my security notes", "turn this lecture into notes", "explain this vulnerability and write it up",
-  or pastes notes or material about penetration testing, web security, reconnaissance, internal networks, privilege
-  escalation, vulnerability principles, tooling, or Android reversing and wants it organized, completed, or explained —
-  even if the word "organize" never appears.
+  Turn cybersecurity class notes, transcripts, lab logs, and articles into deep-learning notes for security beginners
+  (Markdown by default), following "what it is -> why it exists -> how to do it (purpose of every step) -> what it looks
+  like in business -> how to use it in practice", anchoring key points to real cases or business scenarios.
+  Use it when the user says "organize my security notes", "turn this lecture into notes", "explain this vulnerability
+  and write it up", or pastes notes about pentesting, web security, recon, internal networks, privilege escalation,
+  vulnerability principles, tooling, or reversing and wants them organized, completed, or explained — even if the word
+  "organize" never appears.
+version: 1.1.0
+author: "xed686 (original) | local revision: Hermes Agent"
+license: MIT
+platforms: [linux, macos, windows]
+metadata:
+  hermes:
+    tags: [security, note-organizing, security-learning, teaching, obsidian]
 ---
 
 # Cybersecurity Note Organizer
@@ -120,6 +125,25 @@ real engagements**.
 3. In the "map" table at the top of the note, list the level of each knowledge point, so the reader sees the big picture
    before deciding the close-reading order.
 
+#### Length: control it with grade inflation and duplication, not line counts
+
+There is no absolute length cap — a genuinely large topic (say "file inclusion", covering the principle, four
+exploitation routes, a whole family of wrappers, and a full lab walkthrough) *should* be long; forcing a line count only
+makes you cut real content. Guard against two things instead:
+
+1. **Grade inflation**: too many 🔴 labels means no priority at all. Healthy is 🔴 on a minority of subsections (roughly
+   ≤ 1/3). If "environment setup" and "parameter tables" are marked 🔴, the rating was not a judgment.
+2. **Duplication**: the same information written twice — stated in prose and copied again into a table, a full breakdown
+   table for every payload, the "authorized environments only" reminder in every section. This is the main source of bloat.
+
+Two signals that a note is too long:
+
+- Can you recap the skeleton in **five lines or fewer**? If not, the structure is loose — the content is not too little.
+- Could half the subsections be skipped without losing the main line? If so, those should be **downgraded**, not deleted.
+
+When a topic genuinely does not fit, **split it into parts** (e.g. `00_` / `01_` siblings in the same family) instead of
+compressing: split notes are each readable, compressed ones please nobody.
+
 ### Step 3: Expand each knowledge point in depth
 
 For 🔴 / 🟡 points, organize with the "skeleton for real understanding" below; for 🟢 / ⚪, follow the length guidance in
@@ -149,6 +173,11 @@ Skeleton for real understanding (the core idea: **every step has a why**):
 Whenever a command, payload, or tool parameter appears, **break it down into every fragment**: what this fragment is, what
 it does, why it is needed — plus what normal output looks like and how to read it.
 
+For 🔴 core payloads, commands, or configuration tricks, add two more lines: **environment prerequisites** (language
+version, extensions, ini/system switches, directory permissions, whether login is required) and **the most common reason
+it fails** (filtered, wrong path, unsupported version, no write permission). Beginners rarely get stuck on "I did not
+know this trick existed"; they get stuck on "I copied it and it did not run".
+
 ### Step 4: Fill the gaps and label honestly
 
 Source notes usually have holes. Filling them is the value of this skill — but the reader must be able to tell **which
@@ -157,10 +186,18 @@ parts are their original notes and which parts you added**, otherwise nothing ca
 - Anything **not in the source material that you added** (principles, cases, background) uses one standard callout block:
   `> [!note] 🔎 Added (not in source notes)`
 - Details you are unsure about (version numbers, CVE IDs, specific figures, tool parameters) must **not be written down
-  from memory as fact**. If you have web search, verify them, and verify **only against non-mainland-China sources**
-  (English-language authoritative sites, vendor advisories, NVD, major security vendors' English blogs). If you cannot
-  verify, write "roughly / needs verification" and put it in the "Pending verification" list at the end of the notes.
-- Where the original notes are plainly wrong, point it out and give the correct approach. Do not silently fix it.
+  from memory as fact**. Work through three levels of confidence, strongest first:
+  1. **Empirical test**: anything you can run locally, in a lab, or in an authorized environment — just run it. Payload
+     semantics, filter behavior, ini switches, error wording: **one run beats ten articles**. Record the environment
+     (language and version, OS), the command, and the actual output, and add a separate "Verified by testing" line under
+     Sources.
+  2. **Web verification**: for what you cannot test, use **only non-mainland-China sources** (English-language
+     authoritative sites, vendor advisories, NVD, official docs, major security vendors' English blogs).
+  3. **Pending verification**: if neither is possible, write "roughly / needs verification" and put it in the "Pending
+     verification" list at the end — do not blur it with vague wording.
+- When the source notes conflict with your test or verification result, **say so plainly** ("this payload fails in my
+  environment; the correct form is ...") — neither silently correcting it, nor dropping your own test result to spare the
+  original text.
 
 ### Step 5: Anchor the knowledge to real business (case anchors)
 
@@ -184,16 +221,46 @@ went wrong inside a real company**.
   force-translate them.** Explain the meaning in the local language the first time they appear.
 - Write in English, in the voice of a patient teacher.
 
-### Step 7: Finalize and self-check
+### Step 7: Save, index, then self-check
 
-- Default output is a **Markdown file** (`.md`). In claude.ai, save it to `/mnt/user-data/outputs/` and deliver with
-  `present_files`; in other environments such as Claude Code, save to the current working directory or a user-specified
-  location (e.g. the user's notes library). If the user explicitly asks for another format (Word, PDF, etc.), follow
-  that and read the corresponding format skill first.
-- Filename: a concise title, e.g. `sql-injection-union-based-notes.md`.
-- Before delivery, check the draft item by item against `references/self-check.md`. Fix anything that fails, then deliver.
-- Keep the reply short: what ratings you applied, what you added, what needs verification. **Do not paste the whole set of
-  notes back into the reply.**
+**7a Save and index (settle "where, what name, and how it gets found" first)**
+
+Inspect the host environment's existing conventions first; do not invent directories:
+
+1. **Find the owning folder**: look at the user's knowledge-base structure and put the note into an **existing**
+   category folder; create one only if nothing fits, and tell the user.
+2. **Continue the numbering**: when the folder already uses `00_`, `01_` prefixes, **carry on** with the same family
+   naming (e.g. `01_file-inclusion-principles-and-exploitation.md`); do not start a second style.
+3. **Update the index**: add a line to the folder's MOC note list (with a folder tag) and insert the new note into the
+   relevant "topic thread" chain.
+4. **Backfill links**: write the real previous/next and related notes in the new note's navigation block; also add a
+   backlink (`[[new-note-name]]`) in the **1–3 most closely related older notes**.
+5. **Platform differences**: Obsidian gets `[[wikilinks]]`, a plain folder gets relative Markdown links; never hardcode
+   one platform's private path (e.g. claude.ai's `/mnt/user-data/outputs/`).
+
+**7b Self-check and delivery**
+
+- Default output is a **Markdown file** (`.md`), placed per 7a. If the user explicitly asks for another format (Word,
+  PDF, etc.), follow that and read the corresponding format skill first.
+- Filename: a concise title plus the folder's numeric prefix, e.g. `01_file-inclusion-principles-and-exploitation.md`.
+- Before delivery, check the draft item by item against `references/self-check.md`; fix anything that fails. **Verify
+  "link validity" with a command** (grep every `[[link]]` against the existing filenames) instead of trusting memory.
+- Keep the reply short: the ratings applied, what you added, where the note landed and which index entries changed, and
+  what still needs verification or where a test result contradicts the source. **Do not paste the whole note back.**
+
+## Three note types: same steps, different parts
+
+The full skeleton (source/sink code comparison, real security incidents, "how to use it in practice") is designed for
+**vulnerability notes**. When the material is one of the other two types, swap the parts below — do not force the
+skeleton, and do not use the swap as an excuse to skip the why.
+
+| Element | Vulnerability | Tooling and architecture (agents, frameworks, platforms) | Methodology (process, reasoning, criteria) |
+| --- | --- | --- | --- |
+| Rating basis | CTF / bug-bounty frequency, can it be reproduced | Will it be obsolete in six months; **transferable models before specific product names** | How often it is used; does it directly drive the next action |
+| Principle | root cause + source/sink code comparison | Layering / structure diagram (who calls whom) + design trade-offs | Decision criteria (which signal points to which route) |
+| "Case" | Real security incident (see `case-anchors.md`) | **Product case** (1–2 real projects, after checking README / official docs) or a labeled example scenario | Typical business scenario + labeled example scenario |
+| "How to use it in practice" | Trigger cue -> minimal verification -> impact proof | **Selection judgment**: which task to use it for, which not, the cost of choosing wrong | Decision branches: in which situation, take which route |
+| Common failure | Memorizing payloads without the why | Listing features; presenting fast-decaying details as the point | Slogans with no criteria |
 
 ## Boundaries and bottom lines
 
@@ -210,5 +277,5 @@ went wrong inside a real company**.
 | --- | --- |
 | `references/note-template.md` | Before drafting, to build the skeleton |
 | `references/teaching-method.md` | When writing explanations, analogies, step breakdowns |
-| `references/case-anchors.md` | In Step 5, when you need a real case |
+| `references/case-anchors.md` | In Step 5, when you need a real case (includes file upload / file inclusion; also how to swap cases for non-vulnerability knowledge) |
 | `references/self-check.md` | Before delivery, for the self-check |

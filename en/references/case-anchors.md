@@ -20,6 +20,7 @@ Used in Step 5: attach a real business case to each key knowledge point. Look it
 - Permissions and authentication
 - System and internal network
 - Generic: how to write an example scenario when no case exists
+- Generic: how to swap cases for non-vulnerability knowledge (tooling, architecture, methodology)
 
 ---
 
@@ -32,6 +33,9 @@ Used in Step 5: attach a real business case to each key knowledge point. Look it
 | Stored XSS | Samy worm (MySpace, 2005), spreading rapidly via stored XSS | User content output to other users without escaping; script executes under the victim's identity | The power of XSS is "acting as the victim" — it can spread worm-style |
 | SSRF | Capital One 2019 incident, using server-side request forgery to reach the cloud metadata service and obtain credentials | The server issues requests on the user's behalf and can reach internal / metadata addresses | SSRF does far more damage in cloud environments — always think of the metadata service |
 | Unauthorized access / IDOR | Optus 2022 incident, publicly reported as an API lacking access control with enumerable identifiers, exposing large amounts of user information | The endpoint does not check "may this person access this record" | When testing endpoints, change the ID, change the identity, drop authentication — verify access control on every resource |
+| File inclusion (LFI -> RCE) | CVE-2018-12613 in phpMyAdmin (4.8.0 / 4.8.1): the `target` parameter of `index.php` is concatenated into an include path and, via double decoding and filter chains, ends in RCE | User input reaches the include path directly, with no allow-list mapping | The end of LFI is often RCE, not "file read" — rate the report by the real impact; allow-list mapping is the fix |
+| Path traversal / arbitrary file read | CVE-2021-41773 and CVE-2021-42013 (Apache HTTP Server 2.4.49 / 2.4.50): encoded `../` bypasses normalization, allowing arbitrary file reads and, with `mod_cgi` enabled, RCE | Broken path normalization; upgrades skipped the incomplete patched version | Middleware version is a must-check in reconnaissance; an old version is an entry point by itself |
+| File upload | CVE-2017-12615 (Apache Tomcat allows `PUT` to write arbitrary files, e.g. a JSP backdoor) | Dangerous HTTP methods not disabled + executable upload directory | "Upload point" is not only form uploads — think `PUT`/`PATCH` too; a non-executable upload directory is a hard line of defense |
 
 ## Components and supply chain
 
@@ -73,3 +77,20 @@ Key points:
 1. Choose **business nouns** (orders, coupons, invoices, membership, payment callbacks), not an abstract "some system".
 2. State explicitly **which step in the notes it corresponds to**.
 3. Make the **business consequence** clear: what leaked, who was affected, what problems the company faces.
+
+---
+
+## Non-vulnerability knowledge: how to swap the case
+
+When the knowledge point is about tooling, architecture, or methodology (e.g. "the workflow form of an agent",
+"orchestration layer vs execution layer"), real security incidents usually do not fit. Swap the parts below — **do not
+invent a "company X was breached" story to fill the slot**.
+
+| Original part | Replace with | Requirement |
+| --- | --- | --- |
+| Real vulnerability incident (four beats) | **Product case**: pick 1–2 real open-source projects or products and write four beats: what it is -> what its key design is -> what that design solves -> how a learner should use it | Must be written after checking the project README / official docs; include star count, license, and last commit date when available; if you cannot check, downgrade to "example" |
+| Code comparison (source/sink) | **Structure / layering diagram** (mermaid or indented arrows) showing who calls whom and what each layer owns | The diagram must stand on its own without the surrounding prose |
+| "Takeaway for a pentester" | **Selection judgment**: which task to use it for, which task not, and the cost of choosing wrong | Give actionable criteria, not "it depends" |
+
+> The rule for example scenarios is unchanged: anything you construct yourself is labeled "Example scenario" and never
+> written up as a real project's capability.

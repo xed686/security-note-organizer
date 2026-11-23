@@ -122,7 +122,10 @@ Every knowledge point expands along the "skeleton for real understanding" (the c
 7. **Common mistakes** — frequent misconceptions and troubleshooting leads
 
 Whenever a command, payload, or tool parameter appears, it is **broken down into every fragment**: what this fragment is,
-what it does, why it is needed — plus what normal output looks like and how to read it.
+what it does, why it is needed — plus what normal output looks like and how to read it. Core payloads also carry two
+more lines: **environment prerequisites** (language version, extensions, config switches, directory permissions) and
+**the most common reason it fails** — beginners rarely get stuck on "I did not know this trick existed", they get stuck
+on "I copied it and it did not run".
 
 ### Four-tier rating
 
@@ -139,6 +142,17 @@ into the notes**:
 Rate at the **specific knowledge-point / subsection** level, not one level for the whole note; every tier label carries
 half a line on "how to treat it".
 
+### Three note types
+
+The full skeleton (code comparison, real security incidents, "how to use it in practice") is designed for
+**vulnerability notes**. The other two types swap parts instead of forcing the skeleton:
+
+| Element | Vulnerability | Tooling and architecture | Methodology |
+| --- | --- | --- | --- |
+| "Case" | Real security incident | **Product case** (after checking README / official docs) or a labeled example scenario | Typical business scenario + example scenario |
+| Principle | root cause + source/sink code comparison | Layering / structure diagram (who calls whom) + design trade-offs | Decision criteria (which signal points to which route) |
+| "How to use it in practice" | Trigger cue -> minimal verification -> impact proof | **Selection judgment**: which task to use it for, which not | Decision branches |
+
 ### Honest labeling
 
 - Anything **not in the source material that the assistant added** is marked with a standard callout:
@@ -150,19 +164,20 @@ half a line on "how to treat it".
 
 ---
 
-## Known caveat (output path)
+## Save and index (since v1.1)
 
-Step 7 of `SKILL.md` now distinguishes the output location by environment:
+Step 7 of `SKILL.md` is split into **7a save and index** and **7b self-check and delivery**. The note is no longer just
+"written to a .md file" — it lands where the host environment's conventions say, and gets indexed so it can be found:
 
-- In **claude.ai**: by default save to `/mnt/user-data/outputs/` (a Linux / container path) and deliver with `present_files`.
-- In **local environments such as Claude Code**: by default save to the current working directory, or a location you specify (e.g. your notes library).
+1. Put it in an **existing** category folder (create one only if nothing fits, and tell you).
+2. Continue the folder's `00_`, `01_` numbering with the same family naming.
+3. Add a line to the folder MOC's note list and insert the note into the relevant topic-thread chain.
+4. Write real previous/next and related links in the new note; backfill a link in the **1–3 most related older notes**.
+5. Platform differences: Obsidian gets `[[wikilinks]]`, a plain folder gets relative links; the body no longer hardcodes
+   claude.ai's `/mnt/user-data/outputs/`.
 
-If you use claude.ai on Windows and want the output to land in a locally accessible directory, change that line to a directory inside your workspace, for example:
-
-```markdown
-Save to the `outputs/` subdirectory of the current workspace; if there is no workspace, save to
-`C:\Users\<your-username>\WorkBuddy\outputs\`.
-```
+If you really do use claude.ai, set the 7b save location to `/mnt/user-data/outputs/` and deliver with `present_files` —
+that is now an option, not the default assumption.
 
 ---
 
@@ -171,6 +186,27 @@ Save to the `outputs/` subdirectory of the current workspace; if there is no wor
 - Notes are meant for **learning and authorized security testing**. Content involving attack steps carries one reminder of "authorized environments / labs / CTF only".
 - Payloads and commands used to explain principles stay at **course and lab teaching** granularity; no attack plans targeting a **specific real, unauthorized target**.
 - No complete, directly deployable malicious programs (finished ransomware, AV-evading trojans). When a principle needs explaining, only the mechanism and detection ideas are covered.
+
+---
+
+## Changelog
+
+**v1.1.0**
+
+- **Step 7 split into "7a save and index" / "7b self-check and delivery"**: owning folder, `0X_` numbering, MOC entry
+  and topic thread, backlinks to older notes, platform differences; claude.ai-only paths removed from the body
+  (`present_files`, `/mnt/user-data/outputs/`).
+- **New "three note types"**: vulnerability / tooling-and-architecture / methodology, with per-element substitution rules.
+- **Verification is now three tiers**: **empirical test > web verification (non-mainland-China sources) > pending
+  verification**; tests must state environment, command, and actual output, and Sources gets a separate "Verified by
+  testing" line; conflicts with the source must be stated plainly.
+- **New length criteria (no line counts)**: guard against grade inflation (🔴 on a minority of subsections, roughly
+  ≤ 1/3) and duplication; five-line recap test; split into parts rather than compressing.
+- **Core payloads / commands must state environment prerequisites + the most common failure cause.**
+- **Self-check** gains: link validity (grep), index and backlinks, empirical items, length criteria. **Case library**
+  gains file upload / LFI-to-RCE / path traversal skeletons plus "how to swap cases for non-vulnerability knowledge".
+- Trigger description tightened; frontmatter gains `version / license / platforms / metadata`.
+- Synced with the Chinese edition (v1.1.0), which this release mirrors.
 
 ---
 

@@ -181,7 +181,7 @@ cd ~/.workbuddy/skills/security-note-organizer-en && git sparse-checkout set en
 - **自检清单**新增：链接有效性（grep 核验）、索引与回链、实测项、篇幅判据；**案例库**补 文件上传 / 文件包含（LFI→RCE）/ 路径穿越 三类骨架，并新增"非漏洞类知识怎么换案例"。
 - **触发描述精简**；frontmatter 补 `version / license / platforms / metadata`。
 
-> 英文版（`en/`）尚未同步以上改动。
+> 英文版（`en/`）已同步至 v1.1.0；两份的 `name` 分别是 `security-note-organizer` 与 `security-note-organizer-en`，可同时安装而不会互相触发。
 
 ---
 
