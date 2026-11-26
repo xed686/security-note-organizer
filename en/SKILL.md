@@ -8,7 +8,7 @@ description: >-
   and write it up", or pastes notes about pentesting, web security, recon, internal networks, privilege escalation,
   vulnerability principles, tooling, or reversing and wants them organized, completed, or explained — even if the word
   "organize" never appears.
-version: 1.1.0
+version: 1.2.0
 author: "xed686 (original) | local revision: Hermes Agent"
 license: MIT
 platforms: [linux, macos, windows]
@@ -124,6 +124,8 @@ real engagements**.
    treat it".
 3. In the "map" table at the top of the note, list the level of each knowledge point, so the reader sees the big picture
    before deciding the close-reading order.
+4. **Write 2–3 sentences of orientation before the map**: what this note covers, where it sits in the pentest workflow,
+   and what the reader can do afterwards. Panorama first, table second.
 
 #### Length: control it with grade inflation and duplication, not line counts
 
@@ -145,6 +147,16 @@ When a topic genuinely does not fit, **split it into parts** (e.g. `00_` / `01_`
 compressing: split notes are each readable, compressed ones please nobody.
 
 ### Step 3: Expand each knowledge point in depth
+
+**Opening rules (the most common place to get this wrong)**
+
+- The reader's order ≠ the order in which you hold the knowledge. **The first section must be "what it is": one
+  sentence of definition + one everyday analogy + what damage it causes.** Never open with a syntax table, a glossary
+  or a background comparison.
+- Syntax, protocol details, terminology tables and history go **after** "what it is" and "why it exists": they are
+  tools for explaining the mechanism, not the entry ticket.
+- Self-test: hand the first section alone to someone with zero background. Can they say what it is, what it is for, and
+  why it is worth learning? If not, the order is inverted.
 
 For 🔴 / 🟡 points, organize with the "skeleton for real understanding" below; for 🟢 / ⚪, follow the length guidance in
 the Step 2 table and do not apply the full skeleton. The full template is in `references/note-template.md`; writing
@@ -178,6 +190,14 @@ version, extensions, ini/system switches, directory permissions, whether login i
 it fails** (filtered, wrong path, unsupported version, no write permission). Beginners rarely get stuck on "I did not
 know this trick existed"; they get stuck on "I copied it and it did not run".
 
+**Analogy requirements**
+
+- Every 🔴 / 🟡 subsection carries at least one everyday analogy; in a 🔴 note the "principle" and "exploitation"
+  sections must have one.
+- The analogy must map onto the key mechanism. Where the reader could misread it, add one line on **where the analogy
+  breaks down** (e.g. "Word never touches the filesystem; an XML parser really does issue a read or a request").
+- Do not explain one mechanism with two different analogies — that is repetition, not reinforcement.
+
 ### Step 4: Fill the gaps and label honestly
 
 Source notes usually have holes. Filling them is the value of this skill — but the reader must be able to tell **which
@@ -192,7 +212,9 @@ parts are their original notes and which parts you added**, otherwise nothing ca
      (language and version, OS), the command, and the actual output, and add a separate "Verified by testing" line under
      Sources.
   2. **Web verification**: for what you cannot test, use **only non-mainland-China sources** (English-language
-     authoritative sites, vendor advisories, NVD, official docs, major security vendors' English blogs).
+     authoritative sites, vendor advisories, NVD, official docs, major security vendors' English blogs). **For technique
+     and diagnostic experience** (how to tell, what commonly goes wrong), prefer a first-hand writeup (the researcher's
+     own account, the vendor's incident report); second-hand tutorials are leads only.
   3. **Pending verification**: if neither is possible, write "roughly / needs verification" and put it in the "Pending
      verification" list at the end — do not blur it with vague wording.
 - When the source notes conflict with your test or verification result, **say so plainly** ("this payload fails in my

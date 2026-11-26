@@ -7,6 +7,8 @@ Go through every item after drafting. If any item fails, fix it before deliverin
 - [ ] Is the meaning of every term explained in the local language on first appearance, while the English term itself is kept?
 - [ ] Does every key concept have at least one analogy, and does that analogy map onto the real mechanism?
 - [ ] Any wording that assumes prior knowledge, such as "obviously" or "as we all know"?
+- [ ] **Opening**: does the first section give definition + analogy + what damage it causes? Has it opened with syntax, a glossary or a background table instead?
+- [ ] **Analogy coverage**: does every 🔴 / 🟡 subsection have at least one analogy? Where a mechanism is easy to misread, is there a line on where the analogy breaks down?
 
 ## B. Thoroughness (principle, reasoning, procedure)
 - [ ] Does every 🔴 point have a "why it exists (root cause)"?

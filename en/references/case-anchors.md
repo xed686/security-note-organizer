@@ -13,6 +13,9 @@ Used in Step 5: attach a real business case to each key knowledge point. Look it
 3. When no suitable case exists, substitute an "example scenario" and label it clearly. Never write fictional content as a
    real incident.
 4. Cases exist to show **why this knowledge point is worth learning**, not to serve as an attack tutorial.
+5. When choosing a case, **prefer one that teaches a judgment** (how the severity ended up being rated, a misjudgment
+   that was corrected, how a chain escalated) over the most technically elaborate one; add one line on "what judgment
+   this case teaches".
 
 ## Contents
 - Web application

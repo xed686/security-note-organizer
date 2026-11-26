@@ -171,6 +171,15 @@ cd ~/.workbuddy/skills/security-note-organizer-en && git sparse-checkout set en
 
 ## 更新记录
 
+**v1.2.0**
+
+- **新增「开篇三行规则」**（第 3 步）：第一节必须是"定义 + 生活化类比 + 会造成什么"；语法、术语表、背景对比表一律后置到"是什么 / 为什么存在"之后——读者的阅读顺序 ≠ 作者的知识顺序。
+- **新增「类比要求」**（第 3 步）：每个 🔴 / 🟡 小节至少一处类比；易误读处补"类比不准的地方"；同一机制不要用两个类比反复讲。
+- **第 2 步新增 orientation 规则**：地图表之前先写 2–3 句"这一篇讲什么、落在流程哪一环、学完能做什么"。
+- **核实来源分层细化**：手法与诊断经验优先引一手 writeup（当事人复盘、厂商事件报告），二手教程只当线索。
+- **案例选材标准**（case-anchors）：优先选"能带出一个判断"的案例（定级差异、被纠正的误判、组合链如何升级），而不是技术链最复杂的；补一句"这个案例教了什么判断"。
+- **teaching-method 新增类比骨架库**（9 个已验证好用的类比）与密度/反堆叠规则；**self-check** 增两条勾选（开篇、类比覆盖）。
+
 **v1.1.0**
 
 - **第 7 步拆为"7a 落盘与索引 / 7b 自检与交付"**：归属目录、`0X_` 序号接续、MOC 清单与主题线索、旧笔记回链、平台差异；正文移除 claude.ai 专有路径（`present_files`、`/mnt/user-data/outputs/`）。
@@ -181,7 +190,7 @@ cd ~/.workbuddy/skills/security-note-organizer-en && git sparse-checkout set en
 - **自检清单**新增：链接有效性（grep 核验）、索引与回链、实测项、篇幅判据；**案例库**补 文件上传 / 文件包含（LFI→RCE）/ 路径穿越 三类骨架，并新增"非漏洞类知识怎么换案例"。
 - **触发描述精简**；frontmatter 补 `version / license / platforms / metadata`。
 
-> 英文版（`en/`）已同步至 v1.1.0；两份的 `name` 分别是 `security-note-organizer` 与 `security-note-organizer-en`，可同时安装而不会互相触发。
+> 英文版（`en/`）已同步至 v1.2.0；两份的 `name` 分别是 `security-note-organizer` 与 `security-note-organizer-en`，可同时安装而不会互相触发。
 
 ---
 

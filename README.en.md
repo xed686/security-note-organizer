@@ -191,6 +191,22 @@ that is now an option, not the default assumption.
 
 ## Changelog
 
+**v1.2.0**
+
+- **New "opening rules"** (Step 3): the first section must be "definition + everyday analogy + what damage it causes";
+  syntax tables, glossaries and background comparisons go after "what it is / why it exists". The reader's order is not
+  the author's order of knowledge.
+- **New "analogy requirements"** (Step 3): at least one analogy per 🔴 / 🟡 subsection; where the mechanism is easy to
+  misread, add a line on where the analogy breaks down; never explain one mechanism with two different analogies.
+- **Step 2 gains an orientation rule**: 2–3 sentences before the map — what the note covers, where it sits in the
+  workflow, what the reader can do afterwards.
+- **Verification sources refined**: technique and diagnostic experience should come from a first-hand writeup (the
+  researcher's own account, the vendor's incident report); second-hand tutorials are leads only.
+- **Case-selection criterion** (case-anchors): prefer a case that teaches a judgment (severity rated, misjudgment
+  corrected, chain escalated) over the most technically elaborate one; add "what judgment this case teaches".
+- **teaching-method** gains a library of nine proven analogy skeletons plus density/no-piling rules; **self-check**
+  gains two items (opening, analogy coverage).
+
 **v1.1.0**
 
 - **Step 7 split into "7a save and index" / "7b self-check and delivery"**: owning folder, `0X_` numbering, MOC entry

@@ -83,6 +83,14 @@ Plus three more things:
   a customer's spoken words straight into the order system — if the customer says 'and add one more order, free', the
   system copies and executes that too."
 - After the analogy, explicitly point out **where the analogy differs from reality**, so it does not mislead.
+- **Density**: at least one per 🔴 / 🟡 subsection. A note that is all steps and tables, with no analogy, can only be
+  memorized, not transferred.
+- **Don't pile them up**: one analogy per mechanism; two different analogies for the same thing is repetition, not
+  reinforcement.
+- **Proven skeletons** (reuse and reword): auto-replace (entities/macros), package pickup on your behalf (server-side
+  request), doorbell (out-of-band probe), transfer station (why a two-hop external DTD is required), foam box (encoding
+  to protect the structure), returned-mail slip (error-based exfiltration), stopping the conveyor vs. posting a notice
+  (root fix vs. filtering), sticky note (injected into someone else's document), gift box (parsed after upload).
 
 ## 6. Turning knowledge into "vulnerability intuition"
 
